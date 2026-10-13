@@ -1,4 +1,6 @@
-# Prérequis — vibe-session-bridge 1.0.0
+# Annexe E — Prérequis — vibe-session-bridge 1.0.0
+
+Retour : [README](../../README.md) · [ADR](../adr/README.md)
 
 ## Pour utiliser l'extension (fichier .vsix fourni)
 

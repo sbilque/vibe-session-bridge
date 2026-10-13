@@ -7,3 +7,9 @@ tsconfig.json
 *.tar.gz
 dist/*.test.mjs
 .gitignore
+docs/**
+.github/**
+CONTRIBUTING.md
+SECURITY.md
+CODE_OF_CONDUCT.md
+.vscode/**

@@ -1,4 +1,6 @@
-# Audit 1.0 : couverture fonctionnelle
+# Annexe A — Audit 1.0 : couverture fonctionnelle
+
+Retour : [README](../../README.md) · [ADR](../adr/README.md)
 
 Références : `microsoft/vscode@10c7c9e` (13 octobre 2026), `@agentclientprotocol/sdk` 1.8.0, `mistral-vibe` 2.26.1.
 Classement : **A** corrigé en 1.0 · **B** corrigé avec limite · **C** impossible (API interne ou non exposée par Vibe), documenté · ✓ déjà couvert.

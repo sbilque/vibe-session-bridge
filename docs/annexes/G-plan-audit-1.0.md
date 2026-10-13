@@ -1,4 +1,6 @@
-# Plan : audit complet de vibe-session-bridge et livraison 1.0
+# Annexe G — Plan : audit complet de vibe-session-bridge et livraison 1.0
+
+Retour : [README](../../README.md) · [ADR](../adr/README.md)
 
 ## Phase 1 — Référentiel (sources uniquement, rien d'inventé)
 1. **VS Code / Copilot** (`microsoft/vscode@main`) :

@@ -199,5 +199,13 @@
     "@vscode/vsce": "^3.0.0",
     "esbuild": "^0.25.0",
     "typescript": "^5.6.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sbilque/vibe-session-bridge.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sbilque/vibe-session-bridge/issues"
+  },
+  "homepage": "https://github.com/sbilque/vibe-session-bridge#readme"
 }

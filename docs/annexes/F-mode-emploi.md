@@ -1,4 +1,6 @@
-# Mode d'emploi — vibe-session-bridge 1.0.0
+# Annexe F — Mode d'emploi — vibe-session-bridge 1.0.0
+
+Retour : [README](../../README.md) · [ADR](../adr/README.md)
 
 ## 1. Installer
 
