@@ -1,4 +1,4 @@
-# Annexe G — Plan : audit complet de vibe-session-bridge et livraison (publiée en 0.1.0, non testée)
+# Annexe G — Plan : audit complet de vibe-session-bridge et livraison 0.1.0 (non testée)
 
 Retour : [README](../../README.md) · [ADR](../adr/README.md)
 
@@ -26,4 +26,4 @@ Implémentation des points A/B, chacun relié à sa source (fichier + fonction) 
 `tsc --strict`, tests unitaires, tests d'intégration sur les deux moteurs Vibe, nouveaux tests pour chaque correction, smoke test.
 
 ## Phase 6 — Livraison
-`vibe-session-bridge-1.0.0.tar.gz` : sources, tests, scripts, `.vsix` construit, `README.md`, `MODE-EMPLOI.md`, `PREREQUIS.md`, `COMPARAISON.md`, `AUDIT.md` (matrice), `CHANGELOG.md`.
+`vibe-session-bridge-<version>.tar.gz` : sources, tests, scripts, `.vsix` construit, `README.md`, `MODE-EMPLOI.md`, `PREREQUIS.md`, `COMPARAISON.md`, `AUDIT.md` (matrice), `CHANGELOG.md`.
