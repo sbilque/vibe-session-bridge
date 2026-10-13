@@ -1,0 +1,9 @@
+src/**
+test/**
+node_modules/**
+dist/test/**
+*.d.ts
+tsconfig.json
+*.tar.gz
+dist/*.test.mjs
+.gitignore

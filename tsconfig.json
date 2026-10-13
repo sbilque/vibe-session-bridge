@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "preserve", "moduleResolution": "bundler",
+    "strict": true, "esModuleInterop": true, "skipLibCheck": true,
+    "lib": ["ES2022", "DOM"], "types": ["node", "vscode"], "outDir": "dist"
+  },
+  "include": ["src/**/*.ts", "vscode.proposed.*.d.ts"]
+}
