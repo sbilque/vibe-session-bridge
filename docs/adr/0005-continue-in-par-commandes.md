@@ -1,8 +1,8 @@
 # ADR 0005 — « Continue In » par commandes publiques, pas par le menu natif
 
-- Statut : Acceptée
+- Statut : Acceptée (non validée en conditions réelles)
 - Date : 2026-10-13
-- Version : 1.0.0
+- Version : 0.1.0 (développement)
 
 ## Contexte
 

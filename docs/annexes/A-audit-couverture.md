@@ -1,9 +1,9 @@
-# Annexe A — Audit 1.0 : couverture fonctionnelle
+# Annexe A — Audit de couverture (0.1.0) : couverture fonctionnelle
 
 Retour : [README](../../README.md) · [ADR](../adr/README.md)
 
 Références : `microsoft/vscode@10c7c9e` (13 octobre 2026), `@agentclientprotocol/sdk` 1.8.0, `mistral-vibe` 2.26.1.
-Classement : **A** corrigé en 1.0 · **B** corrigé avec limite · **C** impossible (API interne ou non exposée par Vibe), documenté · ✓ déjà couvert.
+Classement : **A** implémenté (non testé en conditions réelles) · **B** corrigé avec limite · **C** impossible (API interne ou non exposée par Vibe), documenté · ✓ déjà couvert.
 
 ## 1. « Continue In » de Claude / Copilot
 
@@ -73,7 +73,7 @@ Source : `src/vs/workbench/contrib/chat/browser/actions/chatContinueInAction.ts`
 
 ## 7. Contenu du prompt (`ContentBlock`)
 
-| Référence VS Code | Avant | 1.0 |
+| Référence VS Code | Avant | 0.1.0 |
 |---|---|---|
 | Fichier (`Uri`) | `resource_link` | ✓ |
 | Sélection (`Location` avec plage) | `resource_link` du fichier entier | **A** : `resource` intégré avec le texte de la plage (`embeddedContext` annoncé) |

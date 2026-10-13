@@ -1,8 +1,8 @@
 # ADR 0007 — Tests d'intégration avec un vrai vibe-acp et un modèle simulé
 
-- Statut : Acceptée
+- Statut : Acceptée (non validée en conditions réelles)
 - Date : 2026-10-13
-- Version : 0.5.0
+- Version : 0.1.0 (développement)
 
 ## Contexte
 

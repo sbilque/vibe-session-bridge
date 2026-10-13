@@ -1,8 +1,8 @@
 {
   "name": "vibe-session-bridge",
   "displayName": "Mistral Vibe – Session Target (ACP bridge)",
-  "description": "Expose l'agent ACP de Mistral Vibe (vibe-acp) comme Session Target natif du Chat VS Code via l'API proposée chatSessionsProvider.",
-  "version": "1.0.0",
+  "description": "Expose l'agent ACP de Mistral Vibe (vibe-acp) comme Session Target natif du Chat VS Code via l'API proposée chatSessionsProvider. (version de développement, non testée)",
+  "version": "0.1.0",
   "publisher": "local",
   "license": "MIT",
   "engines": {

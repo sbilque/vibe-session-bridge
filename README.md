@@ -1,11 +1,30 @@
 # vibe-session-bridge
 
 [![Licence MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/sbilque/vibe-session-bridge)](https://github.com/sbilque/vibe-session-bridge/releases)
+[![Version](https://img.shields.io/badge/version-0.1.0--dev-orange.svg)](CHANGELOG.md)
+[![Statut](https://img.shields.io/badge/statut-non%20test%C3%A9-red.svg)](#état-du-projet)
 
 Extension VS Code qui fait de **Mistral Vibe** (`vibe-acp`) un **Session Target** natif du Chat, au même titre que Copilot CLI ou Claude. Elle parle uniquement l'[Agent Client Protocol](https://agentclientprotocol.com) v1 côté agent et l'API proposée `chatSessionsProvider` côté VS Code : aucun protocole maison.
 
+## État du projet
+
+> **Statut : version de développement 0.1.0, non testée.**
+> Ce code n'a été exécuté ni dans VS Code ni avec l'API Mistral réelle. Seuls des tests automatisés existent : ils simulent VS Code et le modèle (voir [annexe D](docs/annexes/D-tests.md)). Le fonctionnement réel n'est pas garanti : à utiliser pour évaluation et contribution, pas en production.
+
+| Vérification | Fait |
+|---|---|
+| Compilation `tsc --strict` | Oui |
+| Tests unitaires (logique terminal et questions) | Oui |
+| Tests d'intégration avec un vrai `vibe-acp`, VS Code et modèle **simulés** | Oui |
+| Installation et usage dans VS Code Insiders | **Non** |
+| Échanges avec l'API Mistral réelle (abonnement ou clé) | **Non** |
+| Windows, WSL, macOS | **Non** (seulement Linux, environnement de construction) |
+
+Les retours de test sont bienvenus : [ouvrir une issue](https://github.com/sbilque/vibe-session-bridge/issues).
+
 ## Sommaire
+
+- [État du projet](#état-du-projet)
 
 - [Fonctionnalités](#fonctionnalités)
 - [Prérequis](#prérequis)
@@ -18,6 +37,9 @@ Extension VS Code qui fait de **Mistral Vibe** (`vibe-acp`) un **Session Target*
 - [Licence](#licence)
 
 ## Fonctionnalités
+
+Fonctionnalités implémentées, non validées en conditions réelles :
+
 
 - Sessions Vibe dans le sélecteur Session Target : création, liste, reprise avec historique (réflexions et outils compris), fork, renommage, suppression.
 - Sélecteurs sous la saisie : mode (`ask`, `accept-edits`, `auto-approve`, `plan` en legacy), modèle, réflexion.
@@ -34,10 +56,10 @@ VS Code Insiders récent, GitHub Copilot Chat, Python ≥ 3.12, `mistral-vibe` 2
 
 ## Installation
 
-1. Télécharger `vibe-session-bridge-1.0.0.vsix` depuis les [releases](https://github.com/sbilque/vibe-session-bridge/releases), ou le construire (voir [CONTRIBUTING](CONTRIBUTING.md)).
+1. Télécharger `vibe-session-bridge-0.1.0.vsix` depuis les [releases](https://github.com/sbilque/vibe-session-bridge/releases), ou le construire (voir [CONTRIBUTING](CONTRIBUTING.md)).
 2. Installer :
    ```bash
-   code-insiders --install-extension vibe-session-bridge-1.0.0.vsix
+   code-insiders --install-extension vibe-session-bridge-0.1.0.vsix
    ```
 3. Activer les API proposées : palette, « Preferences: Configure Runtime Arguments », puis dans `argv.json` :
    ```jsonc
@@ -86,13 +108,13 @@ Les décisions d'architecture sont consignées dans des [ADR](docs/adr/README.md
 
 | Annexe | Contenu |
 |---|---|
-| [A](docs/annexes/A-audit-couverture.md) | Audit de couverture 1.0 (Continue In, API, ACP) |
+| [A](docs/annexes/A-audit-couverture.md) | Audit de couverture (Continue In, API, ACP) |
 | [B](docs/annexes/B-comparaison-claude-copilot.md) | Comparaison avec Claude et Copilot CLI |
 | [C](docs/annexes/C-correspondance-acp-vscode.md) | Correspondance ACP ↔ VS Code, terminal, questions |
 | [D](docs/annexes/D-tests.md) | Stratégie et résultats de tests |
 | [E](docs/annexes/E-prerequis.md) | Prérequis |
 | [F](docs/annexes/F-mode-emploi.md) | Mode d'emploi et dépannage |
-| [G](docs/annexes/G-plan-audit-1.0.md) | Plan de l'audit 1.0 |
+| [G](docs/annexes/G-plan-audit.md) | Plan de l'audit |
 
 ## Limites connues
 

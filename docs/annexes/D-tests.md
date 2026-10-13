@@ -34,7 +34,7 @@ Constats faits par ces tests (Vibe 2.26.1) :
 - Correctif issu des tests : `vibe-acp` survivait au SIGTERM ; l'arrêt ferme désormais stdin, puis SIGTERM, puis SIGKILL après 2 s.
 
 
-### Tests ajoutés en 1.0
+### Tests ajoutés lors de l'audit
 
 | Test | Vérifie |
 |---|---|
@@ -46,4 +46,13 @@ Constats faits par ces tests (Vibe 2.26.1) :
 | fichiers modifiés et usage | `ChatSessionItem.changes` (+3 −0), badge de contexte, `timing.lastRequestEnded` |
 | renommer / supprimer | méthodes d'extension `_session/set_title`, `_session/delete` |
 
-Résultat 1.0.0 : 17/17 par moteur (unified et legacy), soit 34/34 ; tests unitaires 12/12. Mode API Mistral réelle non exécuté (pas de clé dans l'environnement de construction).
+Résultat 0.1.0 : 17/17 par moteur (unified et legacy), soit 34/34 ; tests unitaires 12/12.
+
+### Ce qui n'a pas été testé
+
+Ces résultats ne valent pas validation : VS Code et le modèle sont simulés.
+
+- Aucune exécution dans VS Code Insiders : rendu du Chat, menus, sélecteur Session Target, API proposées réelles.
+- Aucun échange avec l'API Mistral (`npm run test:integration:mistral` jamais exécuté, faute de clé).
+- Commandes VS Code de « Continuer dans… » : seul l'appel est vérifié, pas leur effet.
+- Seulement sous Linux ; ni Windows, ni WSL, ni macOS.

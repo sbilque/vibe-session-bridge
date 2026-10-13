@@ -57,7 +57,7 @@ Conséquence : copier Claude à l'identique est impossible pour une extension. L
 
 Notifications utilisées, toutes émises par `vibe/acp/session_updates.py` ou `agent.py` : `agent_message_chunk`, `agent_thought_chunk`, `user_message_chunk` (rejeu), `tool_call`, `tool_call_update`, `plan`, `config_option_update`, `session_info_update`.
 
-## 5. Ce qui reste différent de Claude dans le cœur (après l'audit 1.0)
+## 5. Ce qui reste différent de Claude dans le cœur (après l'audit)
 
 - « Continue In » natif : Vibe ne peut pas être une cible du menu (`getAgentCanContinueIn` dans `agentSessions.ts`). Le pont fournit la même fonction par commande, avec le même format de transcription, dans les deux sens (voir [annexe A](A-audit-couverture.md)).
 - Pas de sous-agents (`subAgentInvocationId`) : Vibe ne les expose pas en ACP.

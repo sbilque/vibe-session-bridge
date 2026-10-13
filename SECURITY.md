@@ -2,10 +2,11 @@
 
 ## Versions prises en charge
 
+Le projet est en développement et n'a pas été testé en conditions réelles : aucune garantie de sécurité ni de fonctionnement.
+
 | Version | Correctifs |
 |---|---|
-| 1.0.x | Oui |
-| < 1.0 | Non |
+| 0.1.x (développement, non testée) | Au mieux |
 
 ## Signaler une vulnérabilité
 

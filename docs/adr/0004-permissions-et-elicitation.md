@@ -1,8 +1,8 @@
 # ADR 0004 — Permissions et questions de Vibe dans l'interface native du Chat
 
-- Statut : Acceptée
+- Statut : Acceptée (non validée en conditions réelles)
 - Date : 2026-10-13
-- Version : 0.4.0
+- Version : 0.1.0 (développement)
 
 ## Contexte
 

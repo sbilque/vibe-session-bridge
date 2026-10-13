@@ -1,8 +1,8 @@
 # ADR 0001 — Utiliser ACP v1 et le SDK officiel, sans protocole maison
 
-- Statut : Acceptée
+- Statut : Acceptée (non validée en conditions réelles)
 - Date : 2026-10-13
-- Version : 0.1.0
+- Version : 0.1.0 (développement)
 
 ## Contexte
 

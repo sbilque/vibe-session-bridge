@@ -1,4 +1,4 @@
-# Annexe E — Prérequis — vibe-session-bridge 1.0.0
+# Annexe E — Prérequis — vibe-session-bridge 0.1.0 (développement, non testée)
 
 Retour : [README](../../README.md) · [ADR](../adr/README.md)
 

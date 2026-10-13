@@ -1,4 +1,4 @@
-# Annexe G — Plan : audit complet de vibe-session-bridge et livraison 1.0
+# Annexe G — Plan : audit complet de vibe-session-bridge et livraison (publiée en 0.1.0, non testée)
 
 Retour : [README](../../README.md) · [ADR](../adr/README.md)
 

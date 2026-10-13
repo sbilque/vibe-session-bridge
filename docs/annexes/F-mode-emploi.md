@@ -1,13 +1,15 @@
-# Annexe F — Mode d'emploi — vibe-session-bridge 1.0.0
+# Annexe F — Mode d'emploi — vibe-session-bridge 0.1.0 (développement, non testée)
 
 Retour : [README](../../README.md) · [ADR](../adr/README.md)
+
+> Version de développement non testée dans VS Code : ces étapes décrivent le fonctionnement prévu, pas un fonctionnement vérifié.
 
 ## 1. Installer
 
 ```bash
-tar xzf vibe-session-bridge-1.0.0.tar.gz
-cd vibe-session-bridge
-code-insiders --install-extension vibe-session-bridge-1.0.0.vsix
+git clone https://github.com/sbilque/vibe-session-bridge.git && cd vibe-session-bridge
+npm install && npm run package
+code-insiders --install-extension vibe-session-bridge-0.1.0.vsix
 ```
 
 Activer les API proposées : palette, « Preferences: Configure Runtime Arguments », puis dans `argv.json` :
@@ -62,7 +64,7 @@ npm run check                # tsc --strict
 npm test                     # 12 tests unitaires
 npm run test:integration     # 17 tests x 2 moteurs (unified, legacy), vrai vibe-acp + modèle simulé
 npm run test:integration:mistral   # optionnel : API Mistral réelle (MISTRAL_API_KEY)
-npm run package              # produit vibe-session-bridge-1.0.0.vsix
+npm run package              # produit vibe-session-bridge-0.1.0.vsix
 ```
 
 ## 7. Dépannage
