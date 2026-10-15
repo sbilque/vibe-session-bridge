@@ -1,47 +1,59 @@
-# Contribuer à vibe-session-bridge
+# Contributing to vibe-session-bridge
 
-Merci de votre intérêt. Ce guide décrit comment préparer l'environnement, proposer une modification et la faire accepter.
+Languages: **English** | [Français](CONTRIBUTING-fr.md)
 
-## Règle de base
+Thank you for your interest. This guide explains how to set up the environment, propose a change and get it accepted.
 
-Aucune fonction inventée : tout appel ACP, toute commande VS Code et toute méthode Vibe doit exister dans le code source de référence ([mistral-vibe](https://github.com/mistralai/mistral-vibe), [microsoft/vscode](https://github.com/microsoft/vscode), [SDK ACP](https://www.npmjs.com/package/@agentclientprotocol/sdk)). Indiquez le fichier et la fonction source en commentaire.
+## Ground rule
 
-## Environnement
+No invented functions: every ACP call, VS Code command and Vibe method must exist in the reference source code ([mistral-vibe](https://github.com/mistralai/mistral-vibe), [microsoft/vscode](https://github.com/microsoft/vscode), [ACP SDK](https://www.npmjs.com/package/@agentclientprotocol/sdk)). Give the source file and function in a comment.
 
-Prérequis : [annexe E](docs/annexes/E-prerequis.md) (Node.js ≥ 20, Python ≥ 3.12, `mistral-vibe` 2.26.1).
+## Environment
+
+Prerequisites: [appendix E](docs/en/appendices/E-prerequisites.md) (Node.js ≥ 20, Python ≥ 3.12, `mistral-vibe` 2.26.1).
 
 ```bash
 git clone https://github.com/sbilque/vibe-session-bridge.git
 cd vibe-session-bridge
 npm install
-npm run dts            # .d.ts des API proposées
+npm run dts            # proposed API .d.ts files
 npm run check          # tsc --strict
-npm test               # tests unitaires
-npm run test:integration   # vrai vibe-acp, modèle simulé, deux moteurs
+npm test               # unit tests
+npm run test:integration   # real vibe-acp, simulated model, two engines
 npm run package        # .vsix
 ```
 
-Pour déboguer dans VS Code Insiders : ouvrir le dossier, F5 (« Run Extension ») avec `--enable-proposed-api local.vibe-session-bridge`.
+To debug in VS Code Insiders: open the folder, press F5 ("Run Extension"), which passes `--enable-proposed-api local.vibe-session-bridge`.
 
-## Proposer une modification
+## Proposing a change
 
-1. Ouvrir une issue (bogue ou évolution) avant un changement important.
-2. Créer une branche depuis `main` : `feat/…`, `fix/…`, `docs/…`.
-3. Messages de commit au format [Conventional Commits](https://www.conventionalcommits.org/fr/) : `feat(sessions): …`, `fix(acp): …`.
-4. Ajouter ou adapter les tests : unitaires pour la logique pure, intégration pour tout échange avec Vibe.
-5. Mettre à jour `CHANGELOG.md` (section « Non publié ») et la documentation concernée.
-6. Ouvrir une pull request ; la liste de contrôle du modèle doit être cochée.
+1. Open an issue (bug or enhancement) before a significant change.
+2. Create a branch from `main`: `feat/…`, `fix/…`, `docs/…`.
+3. Commit messages follow [Conventional Commits](https://www.conventionalcommits.org/): `feat(sessions): …`, `fix(acp): …`.
+4. Add or update tests: unit tests for pure logic, integration tests for any exchange with Vibe.
+5. Update `CHANGELOG.md` and `CHANGELOG-fr.md` ("Unreleased" section) and the related documentation.
+6. Open a pull request; the template checklist must be completed.
 
-## Décisions d'architecture
+## Multilingual documentation
 
-Tout choix structurant (protocole, API, dépendance, comportement par défaut) fait l'objet d'une ADR dans `docs/adr/`, à partir de [template.md](docs/adr/template.md), numérotée à la suite. Une ADR acceptée n'est pas modifiée : une nouvelle ADR la remplace.
+- English is the reference language; French is kept in sync.
+- Root: `NAME.md` (English) and `NAME-fr.md` (French). `docs/` folder: `docs/en/…` and `docs/fr/…`, same paths and file names (in English).
+- Every page starts with the language selector line (`Languages: **English** | [Français](…)` / `Langues : [English](…) | **Français**`).
+- Any change to a page is made in both languages in the same pull request. Otherwise, add at the top of the outdated version: `> Translation behind the English version.` (French: `> Traduction en retard sur la version anglaise.`)
+- Do not translate: code, commands, file names, API identifiers, command names shown by the extension.
+- Help: the Copilot agent `.github/agents/translation.agent.md` translates a page while preserving the Markdown.
+- Check links: `python3 scripts/check-links.py`.
+
+## Architecture decisions
+
+Any structural choice (protocol, API, dependency, default behavior) gets an ADR in `docs/en/adr/` and `docs/fr/adr/`, based on [template.md](docs/en/adr/template.md), numbered sequentially. An accepted ADR is never modified: a new ADR supersedes it.
 
 ## Style
 
-- TypeScript strict, pas de `any` sans justification.
-- Textes visibles par l'utilisateur en français.
-- Commentaires : pourquoi, et source (fichier/fonction), plutôt que quoi.
+- Strict TypeScript, no `any` without justification.
+- User-facing strings in French (UI localization not yet in place).
+- Comments: why, and source (file/function), rather than what.
 
 ## Versions
 
-[SemVer](https://semver.org/lang/fr/). Publication : mise à jour de `package.json` et `CHANGELOG.md`, tag `vX.Y.Z`, release GitHub avec le `.vsix`.
+[SemVer](https://semver.org/). Release: update `package.json`, `CHANGELOG.md` and `CHANGELOG-fr.md`, tag `vX.Y.Z`, GitHub release with the `.vsix`.

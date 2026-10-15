@@ -1,14 +1,14 @@
 ---
-name: Bogue
-about: Signaler un dysfonctionnement
+name: Bug / Bogue
+about: Report a malfunction / Signaler un dysfonctionnement
 labels: bug
 ---
 
-**Versions** : VS Code Insiders `code-insiders --version`, extension, `vibe --version`, OS, moteur (unified / legacy)
+**Versions**: VS Code Insiders `code-insiders --version`, extension, `vibe --version`, OS, engine (unified / legacy)
 
-**Étapes**
+**Steps / Étapes**
 1.
 
-**Attendu / obtenu**
+**Expected / actual — Attendu / obtenu**
 
-**Journaux** : « Mistral Vibe: Afficher les journaux ACP » (sans identifiants)
+**Logs / Journaux**: "Mistral Vibe: Afficher les journaux ACP" (remove credentials / sans identifiants)

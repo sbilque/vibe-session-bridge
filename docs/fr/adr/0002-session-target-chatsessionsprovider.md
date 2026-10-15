@@ -1,5 +1,7 @@
 # ADR 0002 — Intégrer Vibe comme Session Target via l'API proposée chatSessionsProvider
 
+Langues : [English](../../en/adr/0002-session-target-chatsessionsprovider.md) | **Français**
+
 - Statut : Acceptée (non validée en conditions réelles)
 - Date : 2026-10-13
 - Version : 0.1.0 (développement)
@@ -20,4 +22,4 @@ Contribuer un type `mistral-vibe` (`contributes.chatSessions`) et implémenter `
 
 ## Sources
 
-[microsoft/vscode](https://github.com/microsoft/vscode) `src/vscode-dts/vscode.proposed.chatSessionsProvider.d.ts`, `chatSessions.contribution.ts` ; annexe [B](../annexes/B-comparaison-claude-copilot.md)
+[microsoft/vscode](https://github.com/microsoft/vscode) `src/vscode-dts/vscode.proposed.chatSessionsProvider.d.ts`, `chatSessions.contribution.ts` ; annexe [B](../appendices/B-claude-copilot-comparison.md)

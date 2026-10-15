@@ -1,29 +1,35 @@
 # Changelog
 
-Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions [SemVer](https://semver.org/lang/fr/).
+Languages: **English** | [Français](CHANGELOG-fr.md)
 
-## [Non publié]
+Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versions follow [SemVer](https://semver.org/).
 
-## [0.1.0] — 2026-10-13 — pré-version, non testée
-
-Première version publiée. **Non testée** dans VS Code ni avec l'API Mistral réelle : seuls des tests automatisés avec VS Code et modèle simulés ont été exécutés (annexe D).
-
-### Ajouté
-- Session Target Mistral Vibe : création, liste, reprise avec historique, fork, renommage, suppression.
-- Sélecteurs mode / modèle / réflexion, appliqués à chaque requête.
-- Permissions et questions de Vibe (`elicitation/create` → `questionCarousel`).
-- Terminal ACP dans le terminal VS Code (moteur legacy de Vibe).
-- Contenu du prompt : fichiers, sélections, texte collé, images, commandes slash.
-- « Continuer dans… » vers Chat local, Copilot CLI, Copilot Cloud, Agent Host ; délégation entrante vers Vibe.
-- Fichiers modifiés et occupation du contexte dans la liste des sessions.
-- Connexion par abonnement ou clé, état (`_auth/status`), déconnexion (`_auth/signOut`).
+## [Unreleased]
 
 ### Documentation
-- README, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, modèles d'issue et de PR.
-- ADR 0001 à 0008 et annexes A à G.
+- Bilingual documentation: English (reference) and French; `docs/en/` and `docs/fr/` with the same file names, language selector on every page.
+- Copilot translation agent: `.github/agents/translation.agent.md`.
+
+## [0.1.0] — 2026-10-13 — pre-release, untested
+
+First published version. **Untested** in VS Code and against the real Mistral API: only automated tests with simulated VS Code and model were run (appendix D).
+
+### Added
+- Mistral Vibe Session Target: create, list, resume with history, fork, rename, delete.
+- Mode / model / thinking pickers, applied on each request.
+- Vibe permissions and questions (`elicitation/create` → `questionCarousel`).
+- ACP terminal in the VS Code terminal (Vibe legacy engine).
+- Prompt content: files, selections, pasted text, images, slash commands.
+- "Continue in…" to local Chat, Copilot CLI, Copilot Cloud, Agent Host; incoming delegation to Vibe.
+- Changed files and context usage in the session list.
+- Sign-in with subscription or key, status (`_auth/status`), sign-out (`_auth/signOut`).
+
+### Documentation
+- README, CONTRIBUTING, SECURITY, CODE_OF_CONDUCT, issue and PR templates.
+- ADR 0001 to 0008 and appendices A to G.
 
 ### Tests
-- 12 tests unitaires ; 17 tests d'intégration par moteur Vibe (unified, legacy) avec un vrai `vibe-acp` 2.26.1, VS Code et modèle simulés.
+- 12 unit tests; 17 integration tests per Vibe engine (unified, legacy) with a real `vibe-acp` 2.26.1, simulated VS Code and model.
 
-[Non publié]: https://github.com/sbilque/vibe-session-bridge/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/sbilque/vibe-session-bridge/compare/v0.1.0...HEAD
 [0.1.0]: https://github.com/sbilque/vibe-session-bridge/releases/tag/v0.1.0

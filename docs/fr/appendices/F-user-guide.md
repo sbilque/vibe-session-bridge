@@ -1,6 +1,8 @@
 # Annexe F — Mode d'emploi — vibe-session-bridge 0.1.0 (développement, non testée)
 
-Retour : [README](../../README.md) · [ADR](../adr/README.md)
+Langues : [English](../../en/appendices/F-user-guide.md) | **Français**
+
+Retour : [README](../../../README-fr.md) · [ADR](../adr/README.md)
 
 > Version de développement non testée dans VS Code : ces étapes décrivent le fonctionnement prévu, pas un fonctionnement vérifié.
 

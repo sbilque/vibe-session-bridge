@@ -1,5 +1,7 @@
 # ADR 0007 — Tests d'intégration avec un vrai vibe-acp et un modèle simulé
 
+Langues : [English](../../en/adr/0007-integration-tests-real-vibe.md) | **Français**
+
 - Statut : Acceptée (non validée en conditions réelles)
 - Date : 2026-10-13
 - Version : 0.1.0 (développement)
@@ -20,4 +22,4 @@ Lancer le vrai `vibe-acp` piloté par le vrai code `src/`. Seuls VS Code (`test/
 
 ## Sources
 
-[mistral-vibe](https://github.com/mistralai/mistral-vibe) `tests/e2e` ; annexe [D](../annexes/D-tests.md)
+[mistral-vibe](https://github.com/mistralai/mistral-vibe) `tests/e2e` ; annexe [D](../appendices/D-tests.md)

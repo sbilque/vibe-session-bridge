@@ -1,6 +1,8 @@
 # Annexe B — Revue : vibe-session-bridge vs Claude / Copilot CLI dans VS Code, et vs le code de Mistral Vibe
 
-Retour : [README](../../README.md) · [ADR](../adr/README.md)
+Langues : [English](../../en/appendices/B-claude-copilot-comparison.md) | **Français**
+
+Retour : [README](../../../README-fr.md) · [ADR](../adr/README.md)
 
 Références lues (13 octobre 2026) :
 - `microsoft/vscode@10c7c9e` (main) : Copilot Chat est désormais dans `extensions/copilot/` ; le dépôt `microsoft/vscode-copilot-chat` n'est plus mis à jour depuis mai 2026.
@@ -17,7 +19,7 @@ Conséquence : copier Claude à l'identique est impossible pour une extension. L
 
 ## 2. Écarts trouvés avec Copilot CLI et corrections
 
-| # | Copilot CLI (référence) | Version 0.2 | Correction 0.3 |
+| # | Copilot CLI (référence) | Avant la revue | Correction |
 |---|---|---|---|
 | 1 | `getChatSessionInputState` construit les groupes d'options **avant** que la session existe (ressource absente) | Groupes vides pour une nouvelle session | Session ACP pré-créée : ses `configOptions` alimentent le sélecteur ; consommée par `newChatSessionItemHandler`, puis remplacée |
 | 2 | Options lues **au moment de la requête** (`getSelectedSessionOptions(chatSessionContext.inputState)`) | Envoi sur `onDidChange` | `applyOptions()` avant chaque `session/prompt` → `session/set_config_option` |
@@ -29,7 +31,7 @@ Conséquence : copier Claude à l'identique est impossible pour une extension. L
 
 ## 3. Écarts trouvés avec le code réel de Vibe et corrections
 
-| # | Constat dans Vibe 2.26.1 | Impact sur 0.2 | Correction 0.3 |
+| # | Constat dans Vibe 2.26.1 | Impact avant la revue | Correction |
 |---|---|---|---|
 | A | Les outils shell **n'envoient pas** de `ToolCallContent` de type `terminal` (`TerminalToolCallContent` n'apparaît que dans la commande `teleport`) | Le rattachement terminal ↔ appel d'outil ne se déclenchait jamais | Commande lue dans `rawInput.command` (`ShellEffectInput`) ; sortie accumulée depuis les deltas `content` texte (`_effect_progress_updates`) |
 | B | `ShellEffectOutput` = `stdout`, `stderr`, `output`, `truncated` : **pas de code de sortie** | Code de sortie absent | Repris du terminal ACP client ayant exécuté la même commande (`lastExitCode`) |
@@ -55,11 +57,13 @@ Conséquence : copier Claude à l'identique est impossible pour une extension. L
 | `prompt` / `cancel` | `prompt` / `cancel` | Non (nécessite une clé valide) |
 | Client : `fs/*`, `request_permission`, `terminal/*` | `vibe/acp/tool_io.py`, `vibe/app_server/_tool_io.py::run_shell` | `terminal/*` par tests unitaires |
 
+Ce tableau reflète la revue initiale. Les tests d'intégration de l'[annexe D](D-tests.md) ont ensuite couvert `loadSession`, `prompt` et `cancel` avec un modèle simulé.
+
 Notifications utilisées, toutes émises par `vibe/acp/session_updates.py` ou `agent.py` : `agent_message_chunk`, `agent_thought_chunk`, `user_message_chunk` (rejeu), `tool_call`, `tool_call_update`, `plan`, `config_option_update`, `session_info_update`.
 
 ## 5. Ce qui reste différent de Claude dans le cœur (après l'audit)
 
-- « Continue In » natif : Vibe ne peut pas être une cible du menu (`getAgentCanContinueIn` dans `agentSessions.ts`). Le pont fournit la même fonction par commande, avec le même format de transcription, dans les deux sens (voir [annexe A](A-audit-couverture.md)).
+- « Continue In » natif : Vibe ne peut pas être une cible du menu (`getAgentCanContinueIn` dans `agentSessions.ts`). Le pont fournit la même fonction par commande, avec le même format de transcription, dans les deux sens (voir [annexe A](A-coverage-audit.md)).
 - Pas de sous-agents (`subAgentInvocationId`) : Vibe ne les expose pas en ACP.
 - Élicitation : format de réponse du carousel conforme à `chatQuestionCarouselPart.ts`.
 - Commandes slash : intégrées déclarées statiquement ; skills tapées à la main (pas d'API de commandes dynamiques pour les types tiers).

@@ -1,92 +1,95 @@
 # vibe-session-bridge
 
-[![Licence MIT](https://img.shields.io/badge/licence-MIT-blue.svg)](LICENSE)
+Languages: **English** | [Français](README-fr.md)
+
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.1.0--dev-orange.svg)](CHANGELOG.md)
-[![Statut](https://img.shields.io/badge/statut-non%20test%C3%A9-red.svg)](#état-du-projet)
+[![Status](https://img.shields.io/badge/status-untested-red.svg)](#project-status)
 
-Extension VS Code qui fait de **Mistral Vibe** (`vibe-acp`) un **Session Target** natif du Chat, au même titre que Copilot CLI ou Claude. Elle parle uniquement l'[Agent Client Protocol](https://agentclientprotocol.com) v1 côté agent et l'API proposée `chatSessionsProvider` côté VS Code : aucun protocole maison.
+VS Code extension that makes **Mistral Vibe** (`vibe-acp`) a native Chat **Session Target**, just like Copilot CLI or Claude. It speaks only the [Agent Client Protocol](https://agentclientprotocol.com) v1 on the agent side and the proposed `chatSessionsProvider` API on the VS Code side: no custom protocol.
 
-## État du projet
+## Project status
 
-> **Statut : version de développement 0.1.0, non testée.**
-> Ce code n'a été exécuté ni dans VS Code ni avec l'API Mistral réelle. Seuls des tests automatisés existent : ils simulent VS Code et le modèle (voir [annexe D](docs/annexes/D-tests.md)). Le fonctionnement réel n'est pas garanti : à utiliser pour évaluation et contribution, pas en production.
+> **Status: development version 0.1.0, untested.**
+> This code has not been run in VS Code nor against the real Mistral API. Only automated tests exist, and they simulate VS Code and the model (see [appendix D](docs/en/appendices/D-tests.md)). Real-world behavior is not guaranteed: use it for evaluation and contribution, not in production.
 
-| Vérification | Fait |
+| Check | Done |
 |---|---|
-| Compilation `tsc --strict` | Oui |
-| Tests unitaires (logique terminal et questions) | Oui |
-| Tests d'intégration avec un vrai `vibe-acp`, VS Code et modèle **simulés** | Oui |
-| Installation et usage dans VS Code Insiders | **Non** |
-| Échanges avec l'API Mistral réelle (abonnement ou clé) | **Non** |
-| Windows, WSL, macOS | **Non** (seulement Linux, environnement de construction) |
+| `tsc --strict` build | Yes |
+| Unit tests (terminal and question logic) | Yes |
+| Integration tests with a real `vibe-acp`, **simulated** VS Code and model | Yes |
+| Installation and use in VS Code Insiders | **No** |
+| Exchanges with the real Mistral API (subscription or key) | **No** |
+| Windows, WSL, macOS | **No** (Linux build environment only) |
 
-Les retours de test sont bienvenus : [ouvrir une issue](https://github.com/sbilque/vibe-session-bridge/issues).
+Test feedback is welcome: [open an issue](https://github.com/sbilque/vibe-session-bridge/issues).
 
-## Sommaire
+## Table of contents
 
-- [État du projet](#état-du-projet)
-
-- [Fonctionnalités](#fonctionnalités)
-- [Prérequis](#prérequis)
+- [Project status](#project-status)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
 - [Installation](#installation)
-- [Utilisation](#utilisation)
+- [Usage](#usage)
 - [Configuration](#configuration)
 - [Architecture](#architecture)
-- [Limites connues](#limites-connues)
-- [Contribuer](#contribuer)
-- [Licence](#licence)
+- [Known limitations](#known-limitations)
+- [Documentation](#documentation)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Fonctionnalités
+## Features
 
-Fonctionnalités implémentées, non validées en conditions réelles :
+Implemented features, not validated in real conditions:
 
+- Vibe sessions in the Session Target picker: create, list, resume with history (thinking and tools included), fork, rename, delete.
+- Pickers below the input: mode (`ask`, `accept-edits`, `auto-approve`, `plan` in legacy), model, thinking.
+- Vibe permissions and questions shown in the native Chat UI.
+- ACP terminal in the VS Code terminal (Vibe legacy engine).
+- Context: files, selections (excerpt only), pasted text, images; Vibe slash commands.
+- "Continue in…" to local Chat, Copilot CLI, Copilot Cloud, Claude, Codex, Copilot (Agent Host), and back to Vibe.
+- Session list: changed files (+/−), context usage.
+- Sign-in with a Mistral subscription or a key, actual status, sign-out.
 
-- Sessions Vibe dans le sélecteur Session Target : création, liste, reprise avec historique (réflexions et outils compris), fork, renommage, suppression.
-- Sélecteurs sous la saisie : mode (`ask`, `accept-edits`, `auto-approve`, `plan` en legacy), modèle, réflexion.
-- Permissions et questions de Vibe affichées dans l'interface native du Chat.
-- Terminal ACP dans le terminal VS Code (moteur legacy de Vibe).
-- Contexte : fichiers, sélections (extrait seul), texte collé, images ; commandes slash de Vibe.
-- « Continuer dans… » vers le Chat local, Copilot CLI, Copilot Cloud, Claude, Codex, Copilot (Agent Host), et l'inverse vers Vibe.
-- Liste des sessions : fichiers modifiés (+/−), occupation du contexte.
-- Connexion avec l'abonnement Mistral ou une clé, état réel, déconnexion.
+## Prerequisites
 
-## Prérequis
-
-VS Code Insiders récent, GitHub Copilot Chat, Python ≥ 3.12, `mistral-vibe` 2.26.1 (`uv tool install mistral-vibe`), un compte Mistral. Détail : [annexe E](docs/annexes/E-prerequis.md).
+Recent VS Code Insiders, GitHub Copilot Chat, Python ≥ 3.12, `mistral-vibe` 2.26.1 (`uv tool install mistral-vibe`), a Mistral account. Details: [appendix E](docs/en/appendices/E-prerequisites.md).
 
 ## Installation
 
-1. Télécharger `vibe-session-bridge-0.1.0.vsix` depuis les [releases](https://github.com/sbilque/vibe-session-bridge/releases), ou le construire (voir [CONTRIBUTING](CONTRIBUTING.md)).
-2. Installer :
+1. Download `vibe-session-bridge-0.1.0.vsix` from the [releases](https://github.com/sbilque/vibe-session-bridge/releases), or build it (see [CONTRIBUTING](CONTRIBUTING.md)).
+2. Install:
    ```bash
    code-insiders --install-extension vibe-session-bridge-0.1.0.vsix
    ```
-3. Activer les API proposées : palette, « Preferences: Configure Runtime Arguments », puis dans `argv.json` :
+3. Enable the proposed APIs: Command Palette, "Preferences: Configure Runtime Arguments", then in `argv.json`:
    ```jsonc
    { "enable-proposed-api": ["local.vibe-session-bridge"] }
    ```
-4. Redémarrer VS Code Insiders, puis « Mistral Vibe: Se connecter (abonnement) ».
+4. Restart VS Code Insiders, then run "Mistral Vibe: Se connecter (abonnement)" (sign in).
 
-## Utilisation
+The extension UI is currently in French only.
 
-1. Ouvrir le Chat, « New Chat (+) », Session Target « Mistral Vibe ».
-2. Choisir mode, modèle et réflexion, joindre fichiers, sélections ou images, taper `/` pour les commandes Vibe.
-3. Menu d'une session : « Continuer dans… », « Renommer », « Supprimer ».
-4. Clic droit dans l'éditeur : « Continuer dans Mistral Vibe ».
+## Usage
 
-Guide complet et dépannage : [annexe F](docs/annexes/F-mode-emploi.md).
+1. Open the Chat, "New Chat (+)", Session Target "Mistral Vibe".
+2. Choose mode, model and thinking, attach files, selections or images, type `/` for Vibe commands.
+3. Session menu: "Continuer dans…" (continue in), "Renommer" (rename), "Supprimer" (delete).
+4. Right-click in the editor: "Continuer dans Mistral Vibe".
+
+Full guide and troubleshooting: [appendix F](docs/en/appendices/F-user-guide.md).
 
 ## Configuration
 
-| Réglage | Défaut | Rôle |
+| Setting | Default | Purpose |
 |---|---|---|
-| `vibeBridge.enabled` | `true` | Affiche « Mistral Vibe » dans le sélecteur |
-| `vibeBridge.command` | `vibe-acp` | Exécutable (chemin absolu conseillé sur macOS) |
-| `vibeBridge.args` | `[]` | `["--legacy-harness"]` : shell dans le terminal VS Code, code de sortie, mode `plan` |
-| `vibeBridge.env` | `{}` | Variables supplémentaires (vide = `~/.vibe/.env`) |
-| `vibeBridge.terminal.enabled` | `true` | Capacité ACP `terminal` |
-| `vibeBridge.terminal.reveal` | `onCreate` | Miroir des commandes (`never` pour masquer) |
-| `vibeBridge.elicitation.enabled` | `true` | Questions de Vibe dans le chat |
+| `vibeBridge.enabled` | `true` | Shows "Mistral Vibe" in the picker |
+| `vibeBridge.command` | `vibe-acp` | Executable (absolute path recommended on macOS) |
+| `vibeBridge.args` | `[]` | `["--legacy-harness"]`: shell in the VS Code terminal, exit code, `plan` mode |
+| `vibeBridge.env` | `{}` | Extra variables (empty = `~/.vibe/.env`) |
+| `vibeBridge.terminal.enabled` | `true` | ACP `terminal` capability |
+| `vibeBridge.terminal.reveal` | `onCreate` | Command mirror (`never` to hide) |
+| `vibeBridge.elicitation.enabled` | `true` | Vibe questions in the chat |
 
 ## Architecture
 
@@ -94,40 +97,54 @@ Guide complet et dépannage : [annexe F](docs/annexes/F-mode-emploi.md).
 VS Code Chat ── chatSessionsProvider ──> extension (src/) ── ACP v1 / stdio ──> vibe-acp (Mistral Vibe)
 ```
 
-| Module | Rôle |
+| Module | Role |
 |---|---|
-| `src/extension.ts` | Activation, commandes |
-| `src/acpAgent.ts` | Processus `vibe-acp`, connexion ACP, authentification, méthodes client `fs/*` |
-| `src/sessions.ts` | Session Target : items, historique, rendu des `session/update`, permissions |
-| `src/prompt.ts` | `ChatRequest` → `ContentBlock[]`, transcription de délégation |
-| `src/continueIn.ts` | « Continuer dans… » dans les deux sens |
-| `src/terminals.ts` | Terminal ACP (`terminal/*`) |
+| `src/extension.ts` | Activation, commands |
+| `src/acpAgent.ts` | `vibe-acp` process, ACP connection, authentication, `fs/*` client methods |
+| `src/sessions.ts` | Session Target: items, history, `session/update` rendering, permissions |
+| `src/prompt.ts` | `ChatRequest` → `ContentBlock[]`, delegation transcript |
+| `src/continueIn.ts` | "Continue in…" in both directions |
+| `src/terminals.ts` | ACP terminal (`terminal/*`) |
 | `src/elicitation.ts` | `elicitation/create` → `questionCarousel` |
 
-Les décisions d'architecture sont consignées dans des [ADR](docs/adr/README.md). Annexes :
+Architecture decisions are recorded as [ADRs](docs/en/adr/README.md). Appendices:
 
-| Annexe | Contenu |
+| Appendix | Content |
 |---|---|
-| [A](docs/annexes/A-audit-couverture.md) | Audit de couverture (Continue In, API, ACP) |
-| [B](docs/annexes/B-comparaison-claude-copilot.md) | Comparaison avec Claude et Copilot CLI |
-| [C](docs/annexes/C-correspondance-acp-vscode.md) | Correspondance ACP ↔ VS Code, terminal, questions |
-| [D](docs/annexes/D-tests.md) | Stratégie et résultats de tests |
-| [E](docs/annexes/E-prerequis.md) | Prérequis |
-| [F](docs/annexes/F-mode-emploi.md) | Mode d'emploi et dépannage |
-| [G](docs/annexes/G-plan-audit.md) | Plan de l'audit |
+| [A](docs/en/appendices/A-coverage-audit.md) | Coverage audit (Continue In, API, ACP) |
+| [B](docs/en/appendices/B-claude-copilot-comparison.md) | Comparison with Claude and Copilot CLI |
+| [C](docs/en/appendices/C-acp-vscode-mapping.md) | ACP ↔ VS Code mapping, terminal, questions |
+| [D](docs/en/appendices/D-tests.md) | Test strategy and results |
+| [E](docs/en/appendices/E-prerequisites.md) | Prerequisites |
+| [F](docs/en/appendices/F-user-guide.md) | User guide and troubleshooting |
+| [G](docs/en/appendices/G-audit-plan.md) | Audit plan |
 
-## Limites connues
+## Known limitations
 
-- API proposée : Insiders uniquement, pas de Marketplace, recompilation possible à chaque version.
-- Le menu natif « Continue Chat in… » n'accepte pas les types tiers ([ADR 0005](docs/adr/0005-continue-in-par-commandes.md)).
-- Moteur par défaut de Vibe : pas de code de sortie des commandes ([ADR 0003](docs/adr/0003-shell-unified-et-legacy.md)).
-- Images seulement si le modèle a `supports_images = true` ; skills Vibe sans autocomplétion.
-- Pas de sous-agents ni d'archivage : non exposés par Vibe.
+- Proposed API: Insiders only, no Marketplace, may need rebuilding with each version.
+- The native "Continue Chat in…" menu does not accept third-party types ([ADR 0005](docs/en/adr/0005-continue-in-via-commands.md)).
+- Vibe default engine: no command exit code ([ADR 0003](docs/en/adr/0003-shell-unified-and-legacy.md)).
+- Images only if the model has `supports_images = true`; Vibe skills without autocompletion.
+- No sub-agents or archiving: not exposed by Vibe.
 
-## Contribuer
+## Documentation
 
-Voir [CONTRIBUTING.md](CONTRIBUTING.md), le [code de conduite](CODE_OF_CONDUCT.md) et la [politique de sécurité](SECURITY.md). Historique : [CHANGELOG.md](CHANGELOG.md).
+Documentation is available in English (reference language) and French, with the same file names:
 
-## Licence
+```
+README.md, CONTRIBUTING.md, …       English (root)
+README-fr.md, CONTRIBUTING-fr.md, … French (root)
+docs/
+  en/  adr/  appendices/            English
+  fr/  adr/  appendices/            French (same file names)
+```
 
-[MIT](LICENSE). Projet indépendant, non affilié à Mistral AI, Microsoft ou GitHub.
+Every page starts with a language selector. Translation rules: [CONTRIBUTING.md](CONTRIBUTING.md#multilingual-documentation).
+
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md), the [code of conduct](CODE_OF_CONDUCT.md) and the [security policy](SECURITY.md). History: [CHANGELOG.md](CHANGELOG.md).
+
+## License
+
+[MIT](LICENSE). Independent project, not affiliated with Mistral AI, Microsoft or GitHub.

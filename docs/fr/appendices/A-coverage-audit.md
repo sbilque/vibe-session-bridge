@@ -1,6 +1,8 @@
 # Annexe A — Audit de couverture (0.1.0) : couverture fonctionnelle
 
-Retour : [README](../../README.md) · [ADR](../adr/README.md)
+Langues : [English](../../en/appendices/A-coverage-audit.md) | **Français**
+
+Retour : [README](../../../README-fr.md) · [ADR](../adr/README.md)
 
 Références : `microsoft/vscode@10c7c9e` (13 octobre 2026), `@agentclientprotocol/sdk` 1.8.0, `mistral-vibe` 2.26.1.
 Classement : **A** implémenté (non testé en conditions réelles) · **B** corrigé avec limite · **C** impossible (API interne ou non exposée par Vibe), documenté · ✓ déjà couvert.
@@ -14,7 +16,7 @@ Source : `src/vs/workbench/contrib/chat/browser/actions/chatContinueInAction.ts`
 | Menu « Continue Chat in… » : cibles | Uniquement `copilotcli` (Background), `copilot-cloud-agent` (Cloud) et les types Agent Host (`agent-host-*`) ayant `canDelegate` (`getAgentCanContinueIn`, `isAgentHostTarget`) | **C** : un type tiers (`mistral-vibe`) ne peut pas être cible du menu |
 | Transcription transmise | `buildDelegationTranscript` : `User: …` / `Assistant: …`, 20 000 derniers caractères ; pour les cibles hors Agent Host, inlinée dans le prompt : « The following is the conversation history from a previous {0} session. Continue working on it. … User: {prompt} » ; pour l'Agent Host, pièce jointe *paste* « Previous conversation » | **A** : même format, réutilisé dans les deux sens |
 | Sortie Vibe → autre agent | Commandes publiques `workbench.action.chat.delegateToAgentHostSession` `{type, displayName, prompt}` et `workbench.action.chat.openNewSessionEditor.<type>` `{prompt}` | **A** : commande « Mistral Vibe : Continuer dans… » (Chat local, Copilot CLI, Cloud, Claude, Codex, Copilot Agent Host) |
-| Sortie Vibe → Vibe Code Web | Commande Vibe `/teleport` (`vibe/acp/commands/registry.py`) | **A** : cible « Vibe Code Web (teleport) » |
+| Sortie Vibe → Vibe Code Web | Commande Vibe `/teleport` (`vibe/acp/commands/registry.py`) | **A** : commande slash `/teleport` déclarée dans la session |
 | Entrée autre agent → Vibe | `openNewSessionEditor.mistral-vibe` / `openSessionWithPrompt.mistral-vibe` générées par VS Code pour tout type contribué, avec `prompt` + `attachedContext` (paste) | **A** : les références texte (paste) sont transmises à Vibe ; commande « Continuer la conversation dans Mistral Vibe » depuis un fichier ou la sélection |
 | Historique reçu par le participant (`ChatContext.history`) | Copilot CLI le résume quand on lui délègue (`copilotCLIChatSessions.ts`) | **A** : nouvelle session Vibe avec historique non vide → transcription préfixée au premier prompt |
 | Options transmises (`initialSessionOptions`) | Spécifique aux cibles internes | **C** |

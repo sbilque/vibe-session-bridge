@@ -1,11 +1,11 @@
 ---
-name: Évolution
-about: Proposer une fonctionnalité
+name: Enhancement / Évolution
+about: Propose a feature / Proposer une fonctionnalité
 labels: enhancement
 ---
 
-**Besoin**
+**Need / Besoin**
 
-**Source** : fonction ACP, commande VS Code ou méthode Vibe existante qui la rend possible (lien vers le code)
+**Source**: existing ACP function, VS Code command or Vibe method that makes it possible (link to the code) / fonction ACP, commande VS Code ou méthode Vibe existante (lien vers le code)
 
-**ADR nécessaire ?** oui / non
+**ADR needed? / ADR nécessaire ?** yes / no

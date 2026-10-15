@@ -1,5 +1,7 @@
 # ADR 0003 — Moteur shell : Unified Harness par défaut, terminal ACP en option
 
+Langues : [English](../../en/adr/0003-shell-unified-and-legacy.md) | **Français**
+
 - Statut : Acceptée (non validée en conditions réelles)
 - Date : 2026-10-13
 - Version : 0.1.0 (développement)
@@ -19,4 +21,4 @@ Implémenter complètement le terminal ACP côté VS Code (`terminal/create`, `o
 
 ## Sources
 
-[mistral-vibe](https://github.com/mistralai/mistral-vibe) `vibe/app_server/_tool_io.py::run_shell`, `_effect_models.py` ; annexe [D](../annexes/D-tests.md)
+[mistral-vibe](https://github.com/mistralai/mistral-vibe) `vibe/app_server/_tool_io.py::run_shell`, `_effect_models.py` ; annexe [D](../appendices/D-tests.md)

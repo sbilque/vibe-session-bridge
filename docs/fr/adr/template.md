@@ -1,5 +1,7 @@
 # ADR NNNN — Titre court à l'infinitif
 
+Langues : [English](../../en/adr/template.md) | **Français**
+
 - Statut : Proposée | Acceptée | Remplacée par NNNN | Abandonnée
 - Date : AAAA-MM-JJ
 - Version : x.y.z

@@ -13,3 +13,5 @@ CONTRIBUTING.md
 SECURITY.md
 CODE_OF_CONDUCT.md
 .vscode/**
+scripts/**
+*-fr.md

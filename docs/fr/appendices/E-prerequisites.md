@@ -1,8 +1,10 @@
 # Annexe E — Prérequis — vibe-session-bridge 0.1.0 (développement, non testée)
 
-Retour : [README](../../README.md) · [ADR](../adr/README.md)
+Langues : [English](../../en/appendices/E-prerequisites.md) | **Français**
 
-## Pour utiliser l'extension (fichier .vsix fourni)
+Retour : [README](../../../README-fr.md) · [ADR](../adr/README.md)
+
+## Pour utiliser l'extension (fichier .vsix)
 
 | Élément | Version | Vérification |
 |---|---|---|
@@ -10,7 +12,7 @@ Retour : [README](../../README.md) · [ADR](../adr/README.md)
 | GitHub Copilot Chat | installé et connecté (le Chat de VS Code et le sélecteur Session Target en dépendent) | vue Chat ouverte |
 | Python | ≥ 3.12 | `python3 --version` |
 | uv (recommandé) ou pipx | récent | `uv --version` |
-| mistral-vibe | 2.26.1 (testé) ; fournit `vibe` et `vibe-acp` | `vibe --version`, `which vibe-acp` |
+| mistral-vibe | 2.26.1 (version des tests automatisés) ; fournit `vibe` et `vibe-acp` | `vibe --version`, `which vibe-acp` |
 | Compte Mistral | abonnement Le Chat Pro / Team / Enterprise, ou clé API (Vibe Code ou La Plateforme) | `vibe` démarre sans demander de clé |
 
 Installation de Vibe :

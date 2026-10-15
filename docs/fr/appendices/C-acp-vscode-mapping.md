@@ -1,6 +1,8 @@
 # Annexe C — Correspondance ACP ↔ VS Code
 
-Retour : [README](../../README.md) · [ADR](../adr/README.md)
+Langues : [English](../../en/appendices/C-acp-vscode-mapping.md) | **Français**
+
+Retour : [README](../../../README-fr.md) · [ADR](../adr/README.md)
 
 ### Ce qui a été étudié
 
@@ -41,6 +43,8 @@ Retour : [README](../../README.md) · [ADR](../adr/README.md)
 | `terminal/wait_for_exit` / `terminal/kill` | attente de fin / arrêt du groupe de processus (SIGTERM puis SIGKILL, `taskkill /T` sous Windows) |
 | `terminal/release` | id invalidé pour l'agent, sortie gardée pour l'affichage |
 | `tool_call` kind `execute` + `rawInput.command` | `ChatTerminalToolInvocationData` (commande, sortie des deltas, code de sortie du terminal client) |
+
+Les ajouts de la 0.1.0 (contenu intégré, images, commandes slash, fichiers modifiés, badge d'usage, méthodes d'extension) sont listés dans l'[annexe A](A-coverage-audit.md).
 
 
 ### Terminal ACP

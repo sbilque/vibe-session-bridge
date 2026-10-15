@@ -1,6 +1,8 @@
 # Annexe D — Stratégie et résultats de tests
 
-Retour : [README](../../README.md) · ADR liée : [0007](../adr/0007-tests-integration-vrai-vibe.md)
+Langues : [English](../../en/appendices/D-tests.md) | **Français**
+
+Retour : [README](../../../README-fr.md) · ADR liée : [0007](../adr/0007-integration-tests-real-vibe.md)
 
 ### Tests d'intégration (vraie session Vibe)
 

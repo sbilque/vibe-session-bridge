@@ -1,5 +1,7 @@
 # ADR 0006 — Méthodes d'extension Vibe préfixées par « _ »
 
+Langues : [English](../../en/adr/0006-vibe-extension-methods.md) | **Français**
+
 - Statut : Acceptée (non validée en conditions réelles)
 - Date : 2026-10-13
 - Version : 0.1.0 (développement)

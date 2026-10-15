@@ -1,6 +1,8 @@
 # Annexe G — Plan : audit complet de vibe-session-bridge et livraison 0.1.0 (non testée)
 
-Retour : [README](../../README.md) · [ADR](../adr/README.md)
+Langues : [English](../../en/appendices/G-audit-plan.md) | **Français**
+
+Retour : [README](../../../README-fr.md) · [ADR](../adr/README.md)
 
 ## Phase 1 — Référentiel (sources uniquement, rien d'inventé)
 1. **VS Code / Copilot** (`microsoft/vscode@main`) :
@@ -27,3 +29,5 @@ Implémentation des points A/B, chacun relié à sa source (fichier + fonction) 
 
 ## Phase 6 — Livraison
 `vibe-session-bridge-<version>.tar.gz` : sources, tests, scripts, `.vsix` construit, `README.md`, `MODE-EMPLOI.md`, `PREREQUIS.md`, `COMPARAISON.md`, `AUDIT.md` (matrice), `CHANGELOG.md`.
+
+Ces fichiers ont depuis été réorganisés en ADR et annexes (`docs/fr/`, `docs/en/`).

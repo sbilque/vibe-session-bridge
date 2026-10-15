@@ -1,5 +1,7 @@
-# Code de conduite
+# Code of conduct
 
-Ce projet adopte le [Contributor Covenant, version 2.1](https://www.contributor-covenant.org/fr/version/2/1/code_of_conduct/). Participants et mainteneurs s'engagent à un échange respectueux, bienveillant et sans harcèlement.
+Languages: **English** | [Français](CODE_OF_CONDUCT-fr.md)
 
-Pour signaler un comportement inacceptable, contactez le mainteneur via le [signalement privé du dépôt](https://github.com/sbilque/vibe-session-bridge/security/advisories/new) ou par message GitHub à @sbilque.
+This project adopts the [Contributor Covenant, version 2.1](https://www.contributor-covenant.org/version/2/1/code_of_conduct/). Participants and maintainers commit to respectful, considerate, harassment-free exchanges.
+
+To report unacceptable behavior, contact the maintainer through the [repository's private reporting](https://github.com/sbilque/vibe-session-bridge/security/advisories/new) or by GitHub message to @sbilque.

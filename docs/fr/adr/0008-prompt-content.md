@@ -1,12 +1,14 @@
 # ADR 0008 — Contenu du prompt selon les capacités annoncées par l'agent
 
+Langues : [English](../../en/adr/0008-prompt-content.md) | **Français**
+
 - Statut : Acceptée (non validée en conditions réelles)
 - Date : 2026-10-13
 - Version : 0.1.0 (développement)
 
 ## Contexte
 
-Vibe annonce `promptCapabilities.image` et `embeddedContext`. Jusqu'en 0.5, seules les références fichier étaient envoyées (`resource_link`) : sélections, texte collé, images et commandes slash étaient perdus.
+Vibe annonce `promptCapabilities.image` et `embeddedContext`. Dans les premières itérations, seules les références fichier étaient envoyées (`resource_link`) : sélections, texte collé, images et commandes slash étaient perdus.
 
 ## Décision
 

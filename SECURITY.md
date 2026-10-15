@@ -1,19 +1,21 @@
-# Politique de sécurité
+# Security policy
 
-## Versions prises en charge
+Languages: **English** | [Français](SECURITY-fr.md)
 
-Le projet est en développement et n'a pas été testé en conditions réelles : aucune garantie de sécurité ni de fonctionnement.
+## Supported versions
 
-| Version | Correctifs |
+The project is under development and has not been tested in real conditions: no security or functional guarantee.
+
+| Version | Fixes |
 |---|---|
-| 0.1.x (développement, non testée) | Au mieux |
+| 0.1.x (development, untested) | Best effort |
 
-## Signaler une vulnérabilité
+## Reporting a vulnerability
 
-Ne pas ouvrir d'issue publique. Utilisez le [signalement privé de GitHub](https://github.com/sbilque/vibe-session-bridge/security/advisories/new) en décrivant la version, l'impact et les étapes de reproduction. Accusé de réception visé sous 7 jours.
+Do not open a public issue. Use [GitHub private reporting](https://github.com/sbilque/vibe-session-bridge/security/advisories/new), describing the version, the impact and the steps to reproduce. Acknowledgement targeted within 7 days.
 
-## Points d'attention
+## Points of attention
 
-- L'extension lance `vibe-acp` et lui donne accès en lecture/écriture aux fichiers de l'espace de travail et à un terminal : n'utilisez le mode `auto-approve` que sur des projets de confiance.
-- Les identifiants restent gérés par Vibe (`~/.vibe/.env` ou connexion au compte Mistral) ; l'extension ne les lit ni ne les stocke. Ne committez jamais `.vibe/.env`.
-- Vulnérabilités de Vibe lui-même : à signaler à [Mistral AI](https://github.com/mistralai/mistral-vibe).
+- The extension starts `vibe-acp` and gives it read/write access to workspace files and a terminal: only use `auto-approve` mode on trusted projects.
+- Credentials remain managed by Vibe (`~/.vibe/.env` or Mistral account sign-in); the extension neither reads nor stores them. Never commit `.vibe/.env`.
+- Vulnerabilities in Vibe itself: report them to [Mistral AI](https://github.com/mistralai/mistral-vibe).

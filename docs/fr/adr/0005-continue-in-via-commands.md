@@ -1,5 +1,7 @@
 # ADR 0005 — « Continue In » par commandes publiques, pas par le menu natif
 
+Langues : [English](../../en/adr/0005-continue-in-via-commands.md) | **Français**
+
 - Statut : Acceptée (non validée en conditions réelles)
 - Date : 2026-10-13
 - Version : 0.1.0 (développement)
@@ -20,4 +22,4 @@ Commande « Mistral Vibe : Continuer dans… » (menu `chat/chatSessions`) vers 
 
 ## Sources
 
-[microsoft/vscode](https://github.com/microsoft/vscode) `chatContinueInAction.ts`, `agentSessions.ts`, `chatSessionsService.ts` ; annexe [A](../annexes/A-audit-couverture.md)
+[microsoft/vscode](https://github.com/microsoft/vscode) `chatContinueInAction.ts`, `agentSessions.ts`, `chatSessionsService.ts` ; annexe [A](../appendices/A-coverage-audit.md)
