@@ -6,6 +6,11 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), versions follo
 
 ## [Unreleased]
 
+### Localization
+- UI localized in English and French: manifest strings through `package.nls.json` / `package.nls.fr.json`, extension code through `vscode.l10n.t()` with `l10n/bundle.l10n.json` / `l10n/bundle.l10n.fr.json` (38 strings).
+- New `l10n` unit test: EN/FR key and `{0}` parameter parity, manifest keys, extraction up to date.
+- Source strings switched to English (reference language); French log and UI messages translated in the bundle.
+
 ### Documentation
 - Bilingual documentation: English (reference) and French; `docs/en/` and `docs/fr/` with the same file names, language selector on every page.
 - Copilot translation agent: `.github/agents/translation.agent.md`.

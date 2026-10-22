@@ -38,7 +38,7 @@ Fully restart VS Code Insiders.
 
 Command Palette, "Mistral Vibe: Se connecter (abonnement)" (sign in with your subscription). The bridge first reads the actual status (`auth/status`): if you are already signed in, it only offers to switch accounts. Otherwise it offers browser sign-in to your Mistral account, or a terminal running `vibe-acp --setup`. "Mistral Vibe: Se déconnecter" (sign out) revokes the account sign-in; with a key in `~/.vibe/.env`, remove it by hand.
 
-The extension UI is currently in French only; command names are given as they appear.
+The extension UI follows your VS Code display language (English or French).
 
 ## 4. Work with Vibe
 

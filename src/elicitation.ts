@@ -67,7 +67,7 @@ function toQuestion(key: string, prop: Prop): Mapped {
       };
     }
     case 'boolean': {
-      const choices = [{ value: 'true', label: 'Oui' }, { value: 'false', label: 'Non' }];
+      const choices = [{ value: 'true', label: vscode.l10n.t('Yes') }, { value: 'false', label: vscode.l10n.t('No') }];
       return {
         key, prop, choices,
         question: new vscode.ChatQuestion(key, vscode.ChatQuestionType.SingleSelect, title, {

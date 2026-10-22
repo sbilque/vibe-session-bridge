@@ -51,7 +51,7 @@ Any structural choice (protocol, API, dependency, default behavior) gets an ADR 
 ## Style
 
 - Strict TypeScript, no `any` without justification.
-- User-facing strings in French (UI localization not yet in place).
+- User-facing strings in English, wrapped in `vscode.l10n.t('…')`; French translations in `l10n/bundle.l10n.fr.json`. Manifest strings as `%key%` in `package.nls.json` + `package.nls.fr.json`. After any change, regenerate with `npx @vscode/l10n-dev export --outDir ./l10n ./src` and update the French bundle (keys and `{0}` parameters must match); `npm test` checks this.
 - Comments: why, and source (file/function), rather than what.
 
 ## Versions

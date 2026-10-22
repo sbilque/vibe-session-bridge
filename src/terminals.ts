@@ -63,7 +63,7 @@ export class AcpTerminalManager implements vscode.Disposable {
       proc.on('close', (code, signal) => {
         t.exit ??= { exitCode: code, signal: signal ?? null };
         t.endedAt = Date.now();
-        t.pty?.fire(`\r\n\x1b[2m[terminé : ${signal ?? `code ${code}`}]\x1b[0m\r\n`);
+        t.pty?.fire(`\r\n\x1b[2m${vscode.l10n.t('[done: {0}]', signal ?? vscode.l10n.t('code {0}', code ?? 0))}\x1b[0m\r\n`);
         resolve(t.exit);
       });
     });
@@ -176,7 +176,7 @@ export class AcpTerminalManager implements vscode.Disposable {
         open: () => {
           write.fire(`\x1b[1m$ ${t.commandLine}\x1b[0m\r\n`);
           write.fire(Buffer.concat(t.chunks).toString('utf8').replace(/\r?\n/g, '\r\n'));
-          if (t.exit) write.fire(`\r\n\x1b[2m[terminé : ${t.exit.signal ?? `code ${t.exit.exitCode}`}]\x1b[0m\r\n`);
+          if (t.exit) write.fire(`\r\n\x1b[2m${vscode.l10n.t('[done: {0}]', t.exit.signal ?? vscode.l10n.t('code {0}', t.exit.exitCode ?? 0))}\x1b[0m\r\n`);
           t.pty = write; // flux direct seulement après le rejeu : pas de doublon
         },
         close: () => { t.pty = undefined; t.ui = undefined; },

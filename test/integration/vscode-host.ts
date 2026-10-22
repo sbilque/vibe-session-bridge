@@ -30,6 +30,14 @@ export class EventEmitter<T> {
 export class Disposable { constructor(private f: () => void) {} dispose() { this.f(); } }
 export class ThemeIcon { constructor(public id: string) {} }
 export class MarkdownString { constructor(public value = '') {} }
+// l10n minimal : substitue {0}…{n} comme le fait vscode.l10n.t (tests en anglais, valeur source).
+export const l10n = {
+  t(message: string, ...args: Array<string | number | boolean | Record<string, unknown>>): string {
+    const named = typeof args[0] === 'object' && args[0] !== null ? args[0] as Record<string, unknown> : undefined;
+    return message.replace(/\{(\w+)\}/g, (_, k) => String(named ? named[k] : (args as unknown[])[Number(k)]));
+  },
+};
+
 export class Position { constructor(public line: number, public character: number) {} }
 export class Range {
   start: Position; end: Position;

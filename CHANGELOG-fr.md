@@ -6,6 +6,11 @@ Format : [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/), versions [Sem
 
 ## [Non publié]
 
+### Localisation
+- Interface localisée en anglais et en français : chaînes du manifeste via `package.nls.json` / `package.nls.fr.json`, code de l'extension via `vscode.l10n.t()` avec `l10n/bundle.l10n.json` / `l10n/bundle.l10n.fr.json` (38 chaînes).
+- Nouveau test unitaire `l10n` : parité des clés et paramètres `{0}` EN/FR, clés du manifeste, extraction à jour.
+- Chaînes sources passées en anglais (langue de référence) ; messages d'interface et journaux traduits dans le bundle.
+
 ### Documentation
 - Documentation bilingue : anglais (référence) et français ; `docs/en/` et `docs/fr/` avec les mêmes noms de fichiers, sélecteur de langue sur chaque page.
 - Agent Copilot de traduction : `.github/agents/translation.agent.md`.

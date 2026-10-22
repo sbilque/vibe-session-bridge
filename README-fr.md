@@ -68,6 +68,8 @@ VS Code Insiders récent, GitHub Copilot Chat, Python ≥ 3.12, `mistral-vibe` 2
    ```
 4. Redémarrer VS Code Insiders, puis « Mistral Vibe: Se connecter (abonnement) ».
 
+L'interface de l'extension suit la langue d'affichage de VS Code (anglais ou français) : chaînes du manifeste via `package.nls*.json`, chaînes du code via `l10n/bundle.l10n.*.json`.
+
 ## Utilisation
 
 1. Ouvrir le Chat, « New Chat (+) », Session Target « Mistral Vibe ».

@@ -51,7 +51,7 @@ Tout choix structurant (protocole, API, dépendance, comportement par défaut) f
 ## Style
 
 - TypeScript strict, pas de `any` sans justification.
-- Textes visibles par l'utilisateur en français.
+- Textes visibles par l'utilisateur en anglais, enveloppés dans `vscode.l10n.t('…')` ; traduction française dans `l10n/bundle.l10n.fr.json`. Chaînes du manifeste en `%clé%` dans `package.nls.json` + `package.nls.fr.json`. Après toute modification, régénérer avec `npx @vscode/l10n-dev export --outDir ./l10n ./src` et mettre à jour le bundle français (clés et paramètres `{0}` identiques) ; `npm test` le vérifie.
 - Commentaires : pourquoi, et source (fichier/fonction), plutôt que quoi.
 
 ## Versions

@@ -68,7 +68,7 @@ export class VibeAcpAgent implements vscode.Disposable {
     // stdout est réservé au JSON-RPC ; Vibe journalise sur stderr.
     proc.stderr!.on('data', (b: Buffer) => this.log.debug(b.toString().trimEnd()));
     proc.on('exit', (code, sig) => {
-      this.log.warn(`vibe-acp terminé (code=${code}, signal=${sig})`);
+      this.log.warn(vscode.l10n.t('vibe-acp exited (code={0}, signal={1})', code ?? 0, sig ?? ''));
       this.conn = undefined; this.init = undefined; this.proc = undefined;
     });
     proc.on('error', (e) => this.log.error(`Impossible de lancer ${command}: ${e.message}`));
@@ -96,8 +96,9 @@ export class VibeAcpAgent implements vscode.Disposable {
         _meta: { 'terminal-auth': true },
       },
     });
-    this.log.info(`ACP initialisé : agent=${this.init.agentInfo?.name}@${this.init.agentInfo?.version}, `
-      + `protocol=${this.init.protocolVersion}, auth=${this.authMethods.map(m => m.id).join(',')}`);
+    this.log.info(vscode.l10n.t('ACP initialized: agent={0}@{1}, protocol={2}, auth={3}',
+      this.init.agentInfo?.name ?? '', this.init.agentInfo?.version ?? '',
+      this.init.protocolVersion, this.authMethods.map(m => m.id).join(',')));
   }
 
   /** Implémentation côté client des requêtes envoyées par l'agent. */
@@ -177,12 +178,12 @@ export class VibeAcpAgent implements vscode.Disposable {
   async signOut(): Promise<void> {
     const st = await this.authStatus();
     if (st && st.signOutAvailable === false) {
-      void vscode.window.showInformationMessage('Mistral Vibe : déconnexion non disponible (clé API configurée dans ~/.vibe/.env ou l\'environnement).');
+      void vscode.window.showInformationMessage(vscode.l10n.t('Mistral Vibe: sign-out is not available (API key configured in ~/.vibe/.env or the environment).'));
       return;
     }
     await (await this.connection()).extMethod('_auth/signOut', {});
     await this.restart();
-    void vscode.window.showInformationMessage('Mistral Vibe : déconnecté.');
+    void vscode.window.showInformationMessage(vscode.l10n.t('Mistral Vibe: signed out.'));
   }
 
   async signIn(): Promise<void> {
@@ -190,18 +191,19 @@ export class VibeAcpAgent implements vscode.Disposable {
     const status = await this.authStatus();
     const methods = this.authMethods;
     if (status?.authenticated) {
-      const again = await vscode.window.showInformationMessage(`Mistral Vibe : déjà authentifié (${status.authState ?? 'ok'}).`, 'Changer de compte');
-      if (again !== 'Changer de compte') return;
+      const switchAccount = vscode.l10n.t('Switch account');
+      const again = await vscode.window.showInformationMessage(vscode.l10n.t('Mistral Vibe: already signed in ({0}).', status.authState ?? 'ok'), switchAccount);
+      if (again !== switchAccount) return;
     }
-    if (!methods.length) { void vscode.window.showInformationMessage('Mistral Vibe : aucune méthode de connexion proposée par l\'agent.'); return; }
+    if (!methods.length) { void vscode.window.showInformationMessage(vscode.l10n.t('Mistral Vibe: no sign-in method offered by the agent.')); return; }
     const pick = methods.length === 1 ? methods[0] : (await vscode.window.showQuickPick(
       methods.map(m => ({ label: m.name, detail: m.description ?? undefined, m })),
-      { title: 'Authentification Mistral Vibe' }))?.m;
-    if (!pick) throw new Error('Authentification annulée');
+      { title: vscode.l10n.t('Mistral Vibe sign-in') }))?.m;
+    if (!pick) throw new Error(vscode.l10n.t('Sign-in cancelled'));
 
     const term = (pick as { _meta?: Record<string, any> })._meta?.['terminal-auth'];
     if (term?.command) {
-      const t = vscode.window.createTerminal({ name: term.label ?? 'Mistral Vibe Setup', shellPath: term.command, shellArgs: term.args ?? [] });
+      const t = vscode.window.createTerminal({ name: term.label ?? vscode.l10n.t('Mistral Vibe setup'), shellPath: term.command, shellArgs: term.args ?? [] });
       t.show();
       await new Promise<void>(res => {
         const d = vscode.window.onDidCloseTerminal(x => { if (x === t) { d.dispose(); res(); } });

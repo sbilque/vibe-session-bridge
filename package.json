@@ -1,7 +1,7 @@
 {
   "name": "vibe-session-bridge",
   "displayName": "Mistral Vibe – Session Target (ACP bridge)",
-  "description": "Expose l'agent ACP de Mistral Vibe (vibe-acp) comme Session Target natif du Chat VS Code via l'API proposée chatSessionsProvider. (version de développement, non testée)",
+  "description": "%ext.description%",
   "version": "0.1.0",
   "publisher": "local",
   "license": "MIT",
@@ -23,11 +23,11 @@
       {
         "type": "mistral-vibe",
         "name": "vibe",
-        "displayName": "Mistral Vibe",
-        "description": "Agent Mistral Vibe via Agent Client Protocol (vibe-acp)",
-        "welcomeTitle": "Mistral Vibe",
-        "welcomeMessage": "Agent de code Mistral, exécuté localement via ACP",
-        "inputPlaceholder": "Demandez une tâche à Mistral Vibe, # pour ajouter du contexte",
+        "displayName": "%session.displayName%",
+        "description": "%session.description%",
+        "welcomeTitle": "%session.welcomeTitle%",
+        "welcomeMessage": "%session.welcomeMessage%",
+        "inputPlaceholder": "%session.inputPlaceholder%",
         "when": "config.vibeBridge.enabled",
         "capabilities": {
           "supportsFileAttachments": true,
@@ -37,41 +37,41 @@
         "commands": [
           {
             "name": "help",
-            "description": "Commandes et raccourcis disponibles"
+            "description": "%cmd.help%"
           },
           {
             "name": "compact",
-            "description": "Résumer l'historique (instructions facultatives)"
+            "description": "%cmd.compact%"
           },
           {
             "name": "reload",
-            "description": "Recharger configuration, instructions et skills"
+            "description": "%cmd.reload%"
           },
           {
             "name": "log",
-            "description": "Chemin du dossier de journaux de la session"
+            "description": "%cmd.log%"
           },
           {
             "name": "mcp",
-            "description": "État OAuth des serveurs MCP"
+            "description": "%cmd.mcp%"
           },
           {
             "name": "teleport",
-            "description": "Poursuivre la session dans Vibe Code Web"
+            "description": "%cmd.teleport%"
           },
           {
             "name": "retry",
-            "description": "Relancer la dernière requête"
+            "description": "%cmd.retry%"
           },
           {
             "name": "data-retention",
-            "description": "Informations sur la conservation des données"
+            "description": "%cmd.data-retention%"
           }
         ]
       }
     ],
     "configuration": {
-      "title": "Mistral Vibe Session Bridge",
+      "title": "%conf.title%",
       "properties": {
         "vibeBridge.enabled": {
           "type": "boolean",
@@ -80,7 +80,7 @@
         "vibeBridge.command": {
           "type": "string",
           "default": "vibe-acp",
-          "description": "Exécutable ACP de Mistral Vibe (entrypoint 'vibe-acp' du package mistral-vibe). Chemin absolu recommandé sur macOS."
+          "description": "%conf.command.description%"
         },
         "vibeBridge.args": {
           "type": "array",
@@ -92,12 +92,12 @@
         "vibeBridge.env": {
           "type": "object",
           "default": {},
-          "description": "Variables d'environnement additionnelles. Laisser vide pour utiliser ~/.vibe/.env."
+          "description": "%conf.env.description%"
         },
         "vibeBridge.terminal.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Annonce la capacité ACP 'terminal' : Vibe exécute alors ses commandes shell via VS Code."
+          "description": "%conf.terminal.enabled.description%"
         },
         "vibeBridge.terminal.reveal": {
           "type": "string",
@@ -106,52 +106,52 @@
             "never"
           ],
           "default": "onCreate",
-          "description": "Affiche chaque commande de l'agent dans un terminal VS Code (miroir lecture seule, Ctrl+C pour arrêter)."
+          "description": "%conf.terminal.reveal.description%"
         },
         "vibeBridge.elicitation.enabled": {
           "type": "boolean",
           "default": true,
-          "description": "Annonce la capacité ACP elicitation.form : les questions de Vibe (outil ask_user_question) s'affichent dans un questionCarousel."
+          "description": "%conf.elicitation.enabled.description%"
         }
       }
     },
     "commands": [
       {
         "command": "vibeBridge.signIn",
-        "title": "Mistral Vibe: Se connecter (abonnement)"
+        "title": "%cmd.signIn%"
       },
       {
         "command": "vibeBridge.restart",
-        "title": "Mistral Vibe: Redémarrer l'agent ACP"
+        "title": "%cmd.restart%"
       },
       {
         "command": "vibeBridge.showLog",
-        "title": "Mistral Vibe: Afficher les journaux ACP"
+        "title": "%cmd.showLog%"
       },
       {
         "command": "vibeBridge.continueIn",
-        "title": "Mistral Vibe: Continuer dans…",
+        "title": "%cmd.continueIn%",
         "icon": "$(arrow-right)"
       },
       {
         "command": "vibeBridge.continueInVibe",
-        "title": "Mistral Vibe: Continuer dans Mistral Vibe (sélection ou fichier)"
+        "title": "%cmd.continueInVibe%"
       },
       {
         "command": "vibeBridge.sessions.rename",
-        "title": "Renommer",
+        "title": "%cmd.rename%",
         "icon": "$(edit)",
         "category": "Mistral Vibe"
       },
       {
         "command": "vibeBridge.sessions.delete",
-        "title": "Supprimer",
+        "title": "%cmd.delete%",
         "icon": "$(close)",
         "category": "Mistral Vibe"
       },
       {
         "command": "vibeBridge.signOut",
-        "title": "Mistral Vibe: Se déconnecter"
+        "title": "%cmd.signOut%"
       }
     ],
     "menus": {
@@ -186,7 +186,7 @@
     "check": "tsc -p . --noEmit",
     "build": "esbuild src/extension.ts --bundle --platform=node --format=cjs --target=node20 --external:vscode --outfile=dist/extension.js",
     "package": "npm run build && vsce package --allow-missing-repository --no-rewrite-relative-links",
-    "test": "esbuild test/*.test.ts --bundle --platform=node --format=esm --alias:vscode=./test/vscode-stub.ts --outdir=dist/test --out-extension:.js=.mjs --log-level=warning && node dist/test/terminals.test.mjs && node dist/test/elicitation.test.mjs",
+    "test": "esbuild test/*.test.ts --bundle --platform=node --format=esm --alias:vscode=./test/vscode-stub.ts --outdir=dist/test --out-extension:.js=.mjs --log-level=warning && node dist/test/terminals.test.mjs && node dist/test/elicitation.test.mjs && node dist/test/l10n.test.mjs",
     "test:integration": "esbuild test/integration/vibe.integration.test.ts --bundle --platform=node --format=esm --alias:vscode=./test/integration/vscode-host.ts --outfile=dist/test/vibe.integration.test.mjs --log-level=warning && node --test --test-concurrency=1 dist/test/vibe.integration.test.mjs && IT_HARNESS=legacy node --test --test-concurrency=1 dist/test/vibe.integration.test.mjs",
     "test:integration:mistral": "esbuild test/integration/vibe.integration.test.ts --bundle --platform=node --format=esm --alias:vscode=./test/integration/vscode-host.ts --outfile=dist/test/vibe.integration.test.mjs --log-level=warning && VIBE_IT_MISTRAL=1 node --test --test-concurrency=1 dist/test/vibe.integration.test.mjs"
   },
@@ -207,5 +207,6 @@
   "bugs": {
     "url": "https://github.com/sbilque/vibe-session-bridge/issues"
   },
-  "homepage": "https://github.com/sbilque/vibe-session-bridge#readme"
+  "homepage": "https://github.com/sbilque/vibe-session-bridge#readme",
+  "l10n": "./l10n"
 }

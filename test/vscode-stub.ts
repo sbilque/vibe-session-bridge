@@ -10,3 +10,11 @@ export class ChatQuestion {
   constructor(public id: string, public type: ChatQuestionType, public title: string, o: any = {}) { Object.assign(this, o); }
 }
 export class MarkdownString { constructor(public value = '') {} }
+
+// l10n minimal : substitue {0}…{n} comme le fait vscode.l10n.t (tests en anglais, valeur source).
+export const l10n = {
+  t(message: string, ...args: Array<string | number | boolean | Record<string, unknown>>): string {
+    const named = typeof args[0] === 'object' && args[0] !== null ? args[0] as Record<string, unknown> : undefined;
+    return message.replace(/\{(\w+)\}/g, (_, k) => String(named ? named[k] : (args as unknown[])[Number(k)]));
+  },
+};

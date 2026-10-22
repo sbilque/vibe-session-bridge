@@ -11,8 +11,8 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
   try {
     await agent.connection(); // initialize : nécessaire pour connaître les capacités (list/fork/load)
   } catch (e) {
-    log.error(`Échec de démarrage de vibe-acp : ${(e as Error).message}`);
-    void vscode.window.showErrorMessage('Mistral Vibe : vibe-acp introuvable. Installez mistral-vibe ou réglez vibeBridge.command.');
+    log.error(vscode.l10n.t('Failed to start vibe-acp: {0}', (e as Error).message));
+    void vscode.window.showErrorMessage(vscode.l10n.t('Mistral Vibe: vibe-acp not found. Install mistral-vibe or set vibeBridge.command.'));
   }
   const sessions = new VibeSessions(agent, log);
   context.subscriptions.push(

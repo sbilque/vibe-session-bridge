@@ -81,10 +81,10 @@ export class VibeSessions implements vscode.Disposable, TurnSource {
           res = await conn.unstable_forkSession({ sessionId, cwd: this.cwd(), mcpServers: [] });
         } catch (e) {
           // Constaté avec vibe-acp 2.26.1 : une session sans message n'est pas persistée → -32602.
-          throw new Error(`Fork impossible (la session doit contenir au moins un échange) : ${(e as Error).message}`);
+          throw new Error(vscode.l10n.t('Fork failed (the session must contain at least one exchange): {0}', (e as Error).message));
         }
         this.setState(res.sessionId, res.configOptions ?? []);
-        const item = this.controller.createChatSessionItem(uriFor(res.sessionId), `Fork : ${this.controller.items.get(resource)?.label ?? sessionId}`);
+        const item = this.controller.createChatSessionItem(uriFor(res.sessionId), vscode.l10n.t('Fork: {0}', this.controller.items.get(resource)?.label ?? sessionId));
         item.iconPath = new vscode.ThemeIcon('sparkle');
         item.timing = { created: Date.now() };
         this.controller.items.add(item);
@@ -134,7 +134,7 @@ export class VibeSessions implements vscode.Disposable, TurnSource {
   // ---- Menu chat/chatSessions : renommer / supprimer (méthodes d'extension Vibe, agent.py::ext_method) ----
   async rename(item: vscode.ChatSessionItem | undefined): Promise<void> {
     if (!item) return;
-    const title = await vscode.window.showInputBox({ title: 'Renommer la session Mistral Vibe', value: item.label });
+    const title = await vscode.window.showInputBox({ title: vscode.l10n.t('Rename Mistral Vibe session'), value: item.label });
     if (!title?.trim()) return;
     const conn = await this.agent.connection();
     await conn.extMethod('_session/set_title', { sessionId: idOf(item.resource), title: title.trim() });
@@ -144,8 +144,9 @@ export class VibeSessions implements vscode.Disposable, TurnSource {
 
   async remove(item: vscode.ChatSessionItem | undefined): Promise<void> {
     if (!item) return;
-    const ok = await vscode.window.showWarningMessage(`Supprimer la session « ${item.label} » ?`, { modal: true }, 'Supprimer');
-    if (ok !== 'Supprimer') return;
+    const del = vscode.l10n.t('Delete');
+    const ok = await vscode.window.showWarningMessage(vscode.l10n.t('Delete session "{0}"?', item.label), { modal: true }, del);
+    if (ok !== del) return;
     const conn = await this.agent.connection();
     await conn.extMethod('_session/delete', { sessionId: idOf(item.resource) });
     this.state.delete(idOf(item.resource));
@@ -278,7 +279,7 @@ export class VibeSessions implements vscode.Disposable, TurnSource {
   private async handle(req: vscode.ChatRequest, ctx: vscode.ChatContext, stream: vscode.ChatResponseStream, token: vscode.CancellationToken): Promise<vscode.ChatResult> {
     const sc = ctx.chatSessionContext;
     if (!sc) {
-      stream.markdown('Ouvrez une nouvelle session **Mistral Vibe** depuis le sélecteur Session Target.');
+      stream.markdown(vscode.l10n.t('Open a new **Mistral Vibe** session from the Session Target picker.'));
       return {};
     }
     const sessionId = idOf(sc.chatSessionItem.resource);
@@ -316,8 +317,8 @@ export class VibeSessions implements vscode.Disposable, TurnSource {
     ];
     try {
       const res = await conn.prompt({ sessionId, prompt });
-      if (res.stopReason === 'refusal') stream.warning('Requête refusée par l\'agent.');
-      if (res.stopReason === 'max_tokens' || res.stopReason === 'max_turn_requests') stream.warning(`Arrêt : ${res.stopReason}`);
+      if (res.stopReason === 'refusal') stream.warning(vscode.l10n.t('Request refused by the agent.'));
+      if (res.stopReason === 'max_tokens' || res.stopReason === 'max_turn_requests') stream.warning(vscode.l10n.t('Stopped: {0}', res.stopReason));
       return { metadata: { stopReason: res.stopReason } };
     } catch (e) {
       return { errorDetails: { message: (e as Error).message } };
@@ -519,7 +520,7 @@ async function askPermission(
   if (vscode.lm.tools.some(x => x.name === CONFIRM_WITH_OPTIONS)) {
     try {
       const r = await vscode.lm.invokeTool(CONFIRM_WITH_OPTIONS, {
-        input: { title: `Mistral Vibe : ${title}`, message, buttons: req.options.map(o => o.name) },
+        input: { title: vscode.l10n.t('Mistral Vibe: {0}', title), message, buttons: req.options.map(o => o.name) },
         toolInvocationToken: chatReq.toolInvocationToken,
       }, token);
       const first = r.content[0];

@@ -68,7 +68,7 @@ Recent VS Code Insiders, GitHub Copilot Chat, Python ≥ 3.12, `mistral-vibe` 2.
    ```
 4. Restart VS Code Insiders, then run "Mistral Vibe: Se connecter (abonnement)" (sign in).
 
-The extension UI is currently in French only.
+The extension UI is localized in English and French (VS Code display language); the `nls`/`l10n` bundles cover the manifest and the extension code.
 
 ## Usage
 
